@@ -1,5 +1,5 @@
 from telegram.ext import ApplicationBuilder
-from config import BOT_TOKEN
+from credentials import BOT_TOKEN
 from handlers.slot import get_spin_handler
 
 def main():
