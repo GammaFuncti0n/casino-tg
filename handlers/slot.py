@@ -29,7 +29,7 @@ async def spin(update: Update, context: ContextTypes.DEFAULT_TYPE):
         balance = balance - bet + winnings
         update_balance(user_id, balance)
         await update.message.reply_text(
-            f"{result_str}\nПоздравляем! Выигрыш x{multiplier}: +{2*(winnings - bet)} монет\nБаланс: {balance}"
+            f"{result_str}\nПоздравляем! Выигрыш x{multiplier}: +{winnings} монет\nБаланс: {balance}"
         )
     else:
         balance -= bet
