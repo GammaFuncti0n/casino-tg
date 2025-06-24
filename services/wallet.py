@@ -5,10 +5,13 @@ WALLET_FILE = "data/wallets.json"
 DEFAULT_BALANCE = 1000
 
 def load_wallets():
-    if not os.path.exists(WALLET_FILE):
-        os.makedirs(os.path.dirname(WALLET_FILE), exist_ok=True)
+    os.makedirs(os.path.dirname(WALLET_FILE), exist_ok=True)
+
+    # если файл не существует или пустой — записываем {}
+    if not os.path.exists(WALLET_FILE) or os.path.getsize(WALLET_FILE) == 0:
         with open(WALLET_FILE, "w") as f:
             json.dump({}, f)
+
     with open(WALLET_FILE, "r") as f:
         return json.load(f)
 
