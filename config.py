@@ -1,1 +1,1 @@
-BOT_TOKEN = #bot token#
+BOT_TOKEN = 0
