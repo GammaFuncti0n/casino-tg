@@ -13,7 +13,10 @@ async def spin(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     bet = int(args[0])
     balance = get_balance(user_id)
-
+    if bet <= 0:
+        await update.message.reply_text(f"{bet} некорректная ставка")
+        return
+    
     if bet > balance:
         await update.message.reply_text(f"Недостаточно средств. Баланс: {balance} монет.")
         return
@@ -26,7 +29,7 @@ async def spin(update: Update, context: ContextTypes.DEFAULT_TYPE):
         balance = balance - bet + winnings
         update_balance(user_id, balance)
         await update.message.reply_text(
-            f"{result_str}\nПоздравляем! Выигрыш x{multiplier}: +{winnings - bet} монет\nБаланс: {balance}"
+            f"{result_str}\nПоздравляем! Выигрыш x{multiplier}: +{2*(winnings - bet)} монет\nБаланс: {balance}"
         )
     else:
         balance -= bet
